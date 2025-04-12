@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# Fintalk Challenge
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Webapp fintalk-challenge is a web application with React.
 
-Currently, two official plugins are available:
+## Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+This project uses as main dependencies: **react**, **typescrip**, **tailwindcss**, **redux** and **react-router-dom(v6)**.
 
-## Expanding the ESLint configuration
+For unit tests it uses **react-testing-library** and **jest**
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+For code patterns and best practices uses **prettier** and **eslint**.
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+This project also uses **husky** to prevent commit and push messy and wrong code.
+
+Maybe you want to read about them:
+
+- [react](https://reactjs.org/)
+- [typescrip](https://www.typescriptlang.org/)
+- [tailwindcss](https://tailwindcss.com/)
+- [redux](https://redux.js.org/)
+- [react-router-dom(v6)](https://reactrouter.com/en/main)
+- [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/)
+- [jest](https://jestjs.io/)
+- [husky](https://github.com/typicode/husky)
+- [prettier](https://prettier.io/)
+
+## Overview
+
+This project contains shareable styles of components, UI Components using React presentation and build configs need to stay here.
+
+## Commands
+
+#### Install
+
+```sh
+yarn install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Run the local Project
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```sh
+yarn dev
 ```
+
+## Run the unit tests
+
+```sh
+yarn test
+```
+
+## 📝 License
+
+Copyright © 2025
