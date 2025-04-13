@@ -4,7 +4,7 @@ Webapp fintalk-challenge is a web application with React.
 
 ## Stack
 
-This project uses as main dependencies: **react**, **typescrip**, **tailwindcss**, **redux** and **react-router-dom(v6)**.
+This project uses as main dependencies: **react**, **typescrip**, **tailwindcss**, **storybook** **redux** and **react-router-dom(v6)**.
 
 For unit tests it uses **react-testing-library** and **jest**
 
@@ -17,6 +17,7 @@ Maybe you want to read about them:
 - [react](https://reactjs.org/)
 - [typescrip](https://www.typescriptlang.org/)
 - [tailwindcss](https://tailwindcss.com/)
+- [Storybook](https://storybook.js.org/)
 - [redux](https://redux.js.org/)
 - [react-router-dom(v6)](https://reactrouter.com/en/main)
 - [react-testing-library](https://testing-library.com/docs/react-testing-library/intro/)
