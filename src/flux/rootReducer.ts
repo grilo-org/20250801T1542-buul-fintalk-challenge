@@ -1,7 +1,7 @@
-import productsReducer from "./modules/products/reducers";
+import userReducer from "./modules/user/reducers";
 
 const rootReducer = () => ({
-  products: productsReducer,
+  user: userReducer,
 });
 
 export default rootReducer;
