@@ -1,43 +1,69 @@
-import { FC, useState } from "react";
-import { Cross2Icon } from "@radix-ui/react-icons";
+import { FC, useEffect } from "react";
+import { Cross2Icon, TrashIcon } from "@radix-ui/react-icons";
 
 import { ChatProps } from "./Chat.types";
+import { useChat } from "../../hooks/useChat";
+import { Button } from "../Button";
 
 const Chat: FC<ChatProps> = ({ onClose }) => {
-  const [messages, setMessages] = useState<string[]>([]);
-  const [inputValue, setInputValue] = useState("");
+  const {
+    messages,
+    inputValue,
+    setInputValue,
+    handleSendMessage,
+    handleClearChat,
+  } = useChat();
 
-  const handleSendMessage = () => {
-    if (inputValue.trim()) {
-      setMessages([...messages, inputValue]);
-      setInputValue("");
+  useEffect(() => {
+    const chatContainer = document.getElementById("chat-messages");
+    if (chatContainer) {
+      chatContainer.scrollTop = chatContainer.scrollHeight;
     }
-  };
+  }, [messages]);
 
   return (
     <div
       data-testid="chat-root"
-      className="fixed bottom-0 left-0 right-0 sm:bottom-24 sm:right-6 sm:left-auto w-full sm:w-80 h-96 bg-white dark:bg-gray-800 rounded-t-lg sm:rounded-lg shadow-xl flex flex-col"
+      className="fixed bottom-0 left-0 right-0 h-full sm:bottom-24 sm:right-6 sm:left-auto w-full sm:w-80 sm:h-96 bg-white dark:bg-gray-800 rounded-t-lg sm:rounded-lg shadow-xl flex flex-col"
     >
       <div className="p-4 border-b border-gray-200 dark:border-gray-700 flex justify-between items-center">
         <h2 className="text-lg font-semibold text-gray-800 dark:text-white">
           Chat
         </h2>
-        <button
-          onClick={onClose}
-          data-testid="close-chat-button"
-          className="text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200"
-        >
-          <Cross2Icon />
-        </button>
+        <div className="flex items-center space-x-2">
+          <Button
+            onClick={handleClearChat}
+            data-testid="clear-chat-button"
+            variant="icon"
+            title="Clear chat"
+          >
+            <TrashIcon />
+          </Button>
+          <Button
+            onClick={onClose}
+            data-testid="close-chat-button"
+            variant="icon"
+            title="Close chat"
+          >
+            <Cross2Icon />
+          </Button>
+        </div>
       </div>
-      <div className="flex-grow p-4 overflow-y-auto">
+      <div
+        data-testid="chat-messages"
+        id="chat-messages"
+        className="flex-grow p-4 overflow-y-auto"
+      >
         {messages.map((message, index) => (
           <div
             key={index}
-            className="mb-2 p-2 bg-gray-100 dark:bg-gray-700 rounded-lg"
+            className={`mb-2 p-2 rounded-lg ${
+              message.isUser
+                ? "bg-pink-100 dark:bg-pink-900 ml-auto"
+                : "bg-gray-100 dark:bg-gray-700"
+            } ${message.isUser ? "text-right" : "text-left"}`}
           >
-            {message}
+            {message.text}
           </div>
         ))}
       </div>
@@ -50,12 +76,9 @@ const Chat: FC<ChatProps> = ({ onClose }) => {
           className="flex-grow mr-2 p-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500 dark:bg-gray-700 dark:text-white"
           placeholder="Type a message..."
         />
-        <button
-          onClick={handleSendMessage}
-          className="px-4 py-2 bg-pink-500 text-white rounded-lg hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
-        >
+        <Button onClick={handleSendMessage} variant="primary">
           Send
-        </button>
+        </Button>
       </div>
     </div>
   );
