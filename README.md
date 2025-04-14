@@ -49,6 +49,12 @@ yarn dev
 yarn test
 ```
 
+## Run the storybook
+
+```sh
+yarn storybook
+```
+
 ## 📝 License
 
 Copyright © 2025
