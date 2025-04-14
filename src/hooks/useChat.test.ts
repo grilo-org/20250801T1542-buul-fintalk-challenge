@@ -1,6 +1,7 @@
 import { act, renderHook } from "@testing-library/react";
-import { useChat } from "./useChat";
 import { vi } from "vitest";
+
+import { useChat } from "./useChat";
 
 describe("useChat", () => {
   it("should initialize messages from localStorage if available", () => {

@@ -1,10 +1,10 @@
+import { Provider } from "react-redux";
 import type { Meta, StoryObj } from "@storybook/react";
 import { action } from "@storybook/addon-actions";
 import { configureStore } from "@reduxjs/toolkit";
-import userReducer from "../../flux/modules/user/reducers";
 
 import Chat from "./Chat";
-import { Provider } from "react-redux";
+import userReducer from "../../flux/modules/user/reducers";
 import { RequestStatus } from "../../models/iRequest";
 
 const createTestStore = (initialState = {}) =>

@@ -1,4 +1,5 @@
 import { FC } from "react";
+
 import { LogoProps } from "./Logo.types";
 import LogoSvg from "../../assets/logo.svg";
 

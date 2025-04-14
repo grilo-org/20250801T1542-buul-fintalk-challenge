@@ -1,6 +1,6 @@
 import { FC, useCallback, useState, useMemo } from "react";
-
 import { HamburgerMenuIcon, Cross1Icon } from "@radix-ui/react-icons";
+
 import { HeaderProps } from "./Header.types";
 import { Avatar } from "../Avatar";
 import { SwitchTheme } from "../SwitchTheme";

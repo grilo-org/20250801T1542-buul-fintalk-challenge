@@ -1,5 +1,6 @@
 import { FC, useMemo } from "react";
 import { Avatar as AvatarRadixUI } from "radix-ui";
+
 import { AvatarProps } from "./Avatar.types";
 
 const Avatar: FC<AvatarProps> = ({ title, src }) => {

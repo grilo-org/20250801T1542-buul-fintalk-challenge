@@ -1,6 +1,7 @@
-import { render, screen } from "@testing-library/react";
-import Select from "./Select";
 import { vi } from "vitest";
+import { render, screen } from "@testing-library/react";
+
+import Select from "./Select";
 
 describe("Select component", () => {
   const mockOnValueChange = vi.fn();
