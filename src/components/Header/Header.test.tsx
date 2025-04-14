@@ -2,6 +2,21 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import { vi } from "vitest";
 import Header from "./Header";
 
+const mockDispatch = vi.fn();
+
+vi.mock("../../hooks/store", () => ({
+  useAppDispatch: () => mockDispatch,
+}));
+
+vi.mock("../../hooks/selectors/userHooks", () => ({
+  useUser: () => ({ data: { id: 1, name: "Test User" } }),
+  useUserList: () => ({
+    data: [
+      { id: 1, name: "Test User" },
+      { id: 2, name: "Another User" },
+    ],
+  }),
+}));
 vi.mock("../Avatar", () => ({
   Avatar: () => <div data-testid="mock-avatar" />,
 }));
@@ -77,5 +92,18 @@ describe("Header", () => {
       .getByTestId("menu-mobile")
       .querySelector("[data-testid='mock-select']");
     expect(mobileSelect).toBeInTheDocument();
+  });
+  it("should render the SwitchTheme component in both desktop and mobile views", () => {
+    render(<Header />);
+
+    const desktopSwitchTheme = screen
+      .getByTestId("desktop-actions")
+      .querySelector("[data-testid='mock-switch-theme']");
+    expect(desktopSwitchTheme).toBeInTheDocument();
+
+    const mobileSwitchTheme = screen
+      .getByTestId("mobile-actions")
+      .querySelector("[data-testid='mock-switch-theme']");
+    expect(mobileSwitchTheme).toBeInTheDocument();
   });
 });

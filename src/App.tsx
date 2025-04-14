@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { ChatBubbleIcon } from "@radix-ui/react-icons";
+
 import { Footer } from "./components/Footer";
 import Header from "./components/Header/Header";
-import { ChatBubbleIcon } from "@radix-ui/react-icons";
 import { Chat } from "./components/Chat";
+
 function App() {
   const [isChatOpen, setIsChatOpen] = useState(false);
 
