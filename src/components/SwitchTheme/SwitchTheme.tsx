@@ -1,4 +1,4 @@
-import { FC, useEffect, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
 import * as Switch from "@radix-ui/react-switch";
 import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
 
@@ -9,13 +9,13 @@ const SwitchTheme: FC<SwitchThemeProps> = () => {
     return localStorage.getItem("darkTheme") === "true";
   });
 
-  const toggleTheme = () => {
+  const toggleTheme = useCallback(() => {
     setIsDarkTheme((prevTheme) => {
       const newTheme = !prevTheme;
       localStorage.setItem("darkTheme", String(newTheme));
       return newTheme;
     });
-  };
+  }, []);
 
   useEffect(() => {
     document.documentElement.classList.toggle("dark", isDarkTheme);
